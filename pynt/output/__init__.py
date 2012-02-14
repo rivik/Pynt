@@ -20,6 +20,7 @@ import shutil       # for CopyFile()
 # local modules
 import pynt.elements
 import pynt.xmlns
+import pynt.technologies
 
 
 class BaseOutput(object):
@@ -153,7 +154,8 @@ class BaseOutput(object):
         elif isinstance(subject, pynt.layers.LabelSet):              pass
         elif isinstance(subject, pynt.layers.Layer):                 pass
         elif isinstance(subject, pynt.layers.ResourceClass):         pass
-        elif isinstance(subject, pynt.layers.Resource):              pass
+        elif isinstance(subject, pynt.layers.Resource):              pass        
+        elif isinstance(subject, pynt.technologies.ethernet.Vlan):   pass
         elif isinstance(subject, pynt.xmlns.XMLNamespace):
             for el in subject.getElements().values():
                 self.printElement(el)

@@ -51,13 +51,15 @@ class FileIOInput(base.BaseIOInput):
         else:
             #self.logger.debug("no %s in first part; deleting %s" % (repr(self.prompt), contents[0]))
             del contents[0] # remove everything before first delimiter/prompt
-        lastmatch = contents[-1].split(self.terminator, 1)  # maxsplit=1
-        if len(lastmatch) > 1:
-            #self.logger.debug("deleting last part %s" % (repr(lastmatch[1])))
-            contents[-1] = lastmatch[0]
-        else:
-            #self.logger.debug("no %s in last part; deleting %s" % (repr(self.terminator), repr(contents[-1])))
-            del contents[-1]
+            
+        # [-] rivik: I do not need to remove the last command output
+        # lastmatch = contents[-1].split(self.terminator, 1)  # maxsplit=1
+        # if len(lastmatch) > 1:
+        #    #self.logger.debug("deleting last part %s" % (repr(lastmatch[1])))
+        #    contents[-1] = lastmatch[0]
+        # else:
+        #    #self.logger.debug("no %s in last part; deleting %s" % (repr(self.terminator), repr(contents[-1])))
+        #    del contents[-1]
         for commandresponse in contents:
             commandresponse = commandresponse.split("\r\n", 1) # maxsplit = 1
             command = commandresponse[0].strip()

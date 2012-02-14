@@ -85,7 +85,7 @@ class DebugOutput(pynt.output.BaseOutput):
             elif isinstance(value, pynt.rangeset.RangeSet):
                 vartype = "range"
             elif isinstance(value, object):
-                vartype = "class"
+                vartype = "class"                
                 value = value.__name__
             elif isinstance(value, types.TypeType):
                 vartype = "type"
